@@ -20,7 +20,7 @@
     * @package     PhalApi\SDK
     * @license     http://www.phalapi.net/license GPL 协议
     * @link        http://www.phalapi.net/
-    * @author      dogstar <chanzonghuang@gmail.com> 2015-10-16
+    *  2015-10-16
  */
 
 class PhalApiClient {

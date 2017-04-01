@@ -4,7 +4,6 @@
  * 
  * - 单个添加，批量弹出
  * 
- * @author dogstar <chanzonghuang@gmail.com> 20150516
  */
 
 interface Task_MQ {

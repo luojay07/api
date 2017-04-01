@@ -23,7 +23,6 @@
  * @package PhalApi\Cookie
  * @license http://www.phalapi.net/license GPL 协议
  * @link http://www.phalapi.net/
- * @author dogstar <chanzonghuang@gmail.com> 2015-04-11
  */
 
 class PhalApi_Cookie {

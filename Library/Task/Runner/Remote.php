@@ -4,7 +4,6 @@
  * 
  * - 通过远程请求接口实现任务调度
  * 
- * @author dogstar <chanzonghuang@gmail.com> 20150516
  */
 
 class Task_Runner_Remote extends Task_Runner {

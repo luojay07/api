@@ -5,7 +5,7 @@
  * @package     PhalApi\Request
  * @license     http://www.phalapi.net/license GPL 协议
  * @link        http://www.phalapi.net/
- * @author      dogstar <chanzonghuang@gmail.com> 2015-11-07
+ *  2015-11-07
  */
 
 class PhalApi_Request_Formatter_Date extends PhalApi_Request_Formatter_Base implements PhalApi_Request_Formatter {

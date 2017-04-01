@@ -10,7 +10,7 @@
  * @package     PhalApi\Model
  * @license     http://www.phalapi.net/license
  * @link        http://www.phalapi.net/
- * @author      dogstar <chanzonghuang@gmail.com> 2015-02-22
+ *  2015-02-22
  */
 
 class PhalApi_Model_NotORM implements PhalApi_Model {

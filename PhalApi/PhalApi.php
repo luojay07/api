@@ -26,7 +26,6 @@ require_once PHALAPI_ROOT . DIRECTORY_SEPARATOR . 'PhalApi' . DIRECTORY_SEPARATO
  * @package     PhalApi\Response
  * @license     http://www.phalapi.net/license GPL 协议
  * @link        http://www.phalapi.net/
- * @author      dogstar <chanzonghuang@gmail.com> 2014-12-17
  */
 
 class PhalApi {

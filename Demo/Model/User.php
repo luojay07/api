@@ -5,7 +5,7 @@ class Model_User extends PhalApi_Model_NotORM {
     public function getByUserId($userId) {
         return $this->getORM()
             ->select('*')
-            ->where('id = ?', $userId)
+            ->where('user_id = ?', $userId)
             ->fetch();
     }
 
@@ -19,9 +19,9 @@ class Model_User extends PhalApi_Model_NotORM {
         return $rs;
     }
 
-    /**
+
     protected function getTableName($id) {
-        return 'user';
+        return 'user_base';
     }
-    */
+
 }

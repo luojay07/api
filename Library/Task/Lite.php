@@ -2,7 +2,6 @@
 /**
  * 计划任务客户端类 Task_Lite
  *
- * @author dogstar <chanzonghuang@gmail.com> 20150516
  */
 
 class Task_Lite {

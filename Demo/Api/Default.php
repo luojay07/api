@@ -1,8 +1,6 @@
 <?php
 /**
  * 默认接口服务类
- *
- * @author: dogstar <chanzonghuang@gmail.com> 2014-10-04
  */
 
 class Api_Default extends PhalApi_Api {
@@ -24,9 +22,8 @@ class Api_Default extends PhalApi_Api {
 	 */
 	public function index() {
         return array(
-            'title' => 'Hello World!',
-            'content' => T('Hi {name}, welcome to use PhalApi!', array('name' => $this->username)),
-            'version' => PHALAPI_VERSION,
+            'title' => 'Hello World! -Jay',
+            'content' => T('欢迎使用绿网管控接口中心'),
             'time' => $_SERVER['REQUEST_TIME'],
         );
 	}

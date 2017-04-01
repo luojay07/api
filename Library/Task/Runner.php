@@ -5,7 +5,6 @@
  * - 异常失败，会轮循重试
  * - 彩蛋式的抽象方法名
  * 
- * @author dogstar <chanzonghuang@gmail.com> 20150516
  */
 
 abstract class Task_Runner {

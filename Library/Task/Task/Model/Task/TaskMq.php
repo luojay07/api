@@ -4,7 +4,6 @@
  * 
  * - 队列存放于数据库表中，并支持分表
  * 
- * @author dogstar <chanzonghuang@gmail.com> 20150516
  */
 
 class Model_Task_TaskMq extends PhalApi_Model_NotORM {

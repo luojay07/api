@@ -22,7 +22,7 @@
  * @link        http://php.net/manual/zh/function.mcrypt-generic.php
  * @license     http://www.phalapi.net/license GPL 协议
  * @link        http://www.phalapi.net/
- * @author      dogstar <chanzonghuang@gmail.com> 2014-12-10
+ *  2014-12-10
  */
 
 class PhalApi_Crypt_Mcrypt implements PhalApi_Crypt {

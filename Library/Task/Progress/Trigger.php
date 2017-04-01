@@ -2,7 +2,6 @@
 /**
  * 触发器接口
  * 
- * @author dogstar <chanzonghuang@gmail.com> 20150520
  */
 
 interface Task_Progress_Trigger {

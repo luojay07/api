@@ -8,7 +8,7 @@
  * @package     PhalApi\Response
  * @license     http://www.phalapi.net/license GPL 协议
  * @link        http://www.phalapi.net/
- * @author      dogstar <chanzonghuang@gmail.com> 2014-10-02
+ *  2014-10-02
  */
 
 abstract class PhalApi_Response {

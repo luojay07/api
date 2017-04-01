@@ -1,6 +1,6 @@
 <?php
 /**
- * @author dogstar <chanzonghuang@gmail.com> 2015-02-22
+ * @author Jay
  */
 
 class ModelProxy_UserBaseInfo extends PhalApi_ModelProxy {

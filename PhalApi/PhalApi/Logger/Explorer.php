@@ -7,7 +7,7 @@
  * @package     PhalApi\Logger
  * @license     http://www.phalapi.net/license GPL 协议
  * @link        http://www.phalapi.net/
- * @author      dogstar <chanzonghuang@gmail.com> 2015-02-09 
+ *  2015-02-09
  */
 
 class PhalApi_Logger_Explorer extends PhalApi_Logger {

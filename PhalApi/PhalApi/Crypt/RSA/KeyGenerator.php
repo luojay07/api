@@ -7,7 +7,7 @@
  * @package     PhalApi\Crypt\RSA
  * @license     http://www.phalapi.net/license GPL 协议
  * @link        http://www.phalapi.net/
- * @author      dogstar <chanzonghuang@gmail.com> 2015-03-15
+ *  2015-03-15
  */
 
 class PhalApi_Crypt_RSA_KeyGenerator {

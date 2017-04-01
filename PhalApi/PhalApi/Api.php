@@ -30,7 +30,6 @@
  * @package     PhalApi\Api
  * @license     http://www.phalapi.net/license GPL 协议 GPL 协议
  * @link        http://www.phalapi.net/
- * @author      dogstar <chanzonghuang@gmail.com> 2014-10-02
  */
 
 class PhalApi_Api {
