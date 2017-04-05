@@ -2,6 +2,10 @@
 
 class Model_User extends PhalApi_Model_NotORM {
 
+    protected function getTableName($id) {
+        return 'user_base';
+    }
+
     public function getByUserId($userId) {
         return $this->getORM()
             ->select('*')
@@ -18,10 +22,4 @@ class Model_User extends PhalApi_Model_NotORM {
         }
         return $rs;
     }
-
-
-    protected function getTableName($id) {
-        return 'user_base';
-    }
-
 }
