@@ -51,6 +51,24 @@ class PhalApi_Request {
      */
     protected $actionName;
 
+    /**
+     * 请求方法
+     * @var string
+     */
+    protected $requestMethoed;
+
+    /**
+     * 内部定义内容方式
+     * @var int
+     */
+    protected $contentType;
+
+    /**
+     * 内容ID
+     * @var string
+     */
+    protected $contentId;
+
     /** 
      * - 如果需要定制已知的数据源（即已有数据成员），则可重载此方法，例
      *
@@ -78,7 +96,9 @@ class PhalApi_Request {
      */
     public function __construct($data = NULL) {
         // 主数据源
-        $this->data     = $this->genData($data);
+        $this->requestMethoed = strtoupper($_SERVER["REQUEST_METHOD"]);
+        $this->data = $this->parseData();
+        //$this->data     = $this->genData($data);
 
         // 备用数据源
         $this->headers  = $this->getAllHeaders();
@@ -88,6 +108,88 @@ class PhalApi_Request {
         $this->cookie   = $_COOKIE;
         
         @list($this->apiName, $this->actionName) = explode('.', $this->getService());
+    }
+
+    /**
+     * 获取内容类型
+     */
+    public function getContentType()
+    {
+        return $this->contentType;
+    }
+
+    /**
+     * 获取内容ID
+     */
+    public function getContentId()
+    {
+        return $this->contentId;
+    }
+
+    /**
+     * 解析请求参数
+     */
+    protected function parseData(){
+        if (isset($_SERVER['HTTP_TOKEN']) && empty($_SERVER['HTTP_TOKEN'])) {
+            return null;
+        }
+        
+        switch ($this->requestMethoed) {
+            case 'GET':
+            case 'PUT':
+                return [];
+                break;
+            default:
+                $contentType = strtolower($_SERVER["CONTENT_TYPE"]);
+                $str = file_get_contents("php://input");
+                if (empty($str)) {
+                    return null;
+                }
+                
+                switch ($contentType){
+                    case 'application/json':
+                        $this->contentType = 1;
+                        
+                        break;
+                        
+                    case 'application/rsa-json':
+                        $this->contentType = 2;
+                        $str = Crypto::rsaDecrypt(RSA_PRIVATE_KEY, $str);
+                        break;
+                        
+                    case 'application/crypto-json':
+                        $this->contentType = 3;
+                        $key = DI()->tokenHandler->getDesKey();
+                        if(!isset($key)) {
+                            return null;
+                        }
+                        
+                        $gz = Crypto::desDecrypt($key, $str);
+                        // 解压
+                        $str = gzuncompress($gz);
+                        break;
+                        
+                    case 'application/x-crypto-json':
+                        $this->contentType = 4;
+                        $key = DI()->tokenHandler->getDesKey();
+                        if(!isset($key)) {
+                            return null;
+                        }
+                        
+                        $gz = Crypto::desDecrypt($key, $str);
+                        // 解压
+                        $str = gzuncompress($gz);
+                        $pos = strpos($str, '{');
+                        $this->contentId = substr($str, 0, $pos);
+                        $str = substr($str, $pos);
+                        break;
+                    default:
+                        return null;
+                        break;
+                }
+                return json_decode($str, true);
+                break;
+        }
     }
 
     /**
@@ -244,6 +346,21 @@ class PhalApi_Request {
         return $this->get('service', 'Default.Index');
     }
 
+    public function getControllerName(){
+        $url = $this->getUrl();
+        $arr = explode('/', trim($url, '/'));
+        $arr = array_map(function ($val){ return ucfirst($val);}, $arr);
+        return implode('_', $arr);
+    }
+
+    /**
+     * 获取url名称
+     * @return string URL名称
+     */
+    public function getUrl(){
+        $url = isset($_SERVER["REDIRECT_URL"]) ? $_SERVER["REDIRECT_URL"] : $_SERVER['PATH_INFO'];
+        return $url;
+    }
     /**
      * 获取接口服务名称中的接口类名
      * @return string 接口类名

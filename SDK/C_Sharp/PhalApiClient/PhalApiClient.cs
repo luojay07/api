@@ -32,7 +32,7 @@ namespace PhalApiClientSDK
         * @package     PhalApi\Response
         * @license     http://www.phalapi.net/license GPL 协议
         * @link        http://www.phalapi.net/
-        *  2015-10-16
+        * @author      dogstar <chanzonghuang@gmail.com> 2015-10-16
      */
 
     public class PhalApiClient {

@@ -34,7 +34,7 @@ class PhalApi_ApiFactory {
      * @throws PhalApi_Exception_BadRequest 非法请求下返回400
      */
     static function generateService($isInitialize = TRUE) {
-        $service    = DI()->request->getService();
+        /* $service    = DI()->request->getService();
         $api        = DI()->request->getServiceApi();
         $action     = DI()->request->getServiceAction();
 
@@ -44,10 +44,16 @@ class PhalApi_ApiFactory {
             );
         }
 
-        $apiClass = 'Api_' . ucfirst($api);
+        $apiClass = 'Api_' . ucfirst($api); */
+        $url = DI()->request->getUrl();
+        
+        $controllerName = DI()->request->getControllerName();
+        $action = DI()->config->get('sys.actionName');
+        
+        $apiClass = 'Api_' . $controllerName;
         if (!class_exists($apiClass)) {
             throw new PhalApi_Exception_BadRequest(
-                T('no such service as {service}', array('service' => $service)), 4
+                T('no such service as {service}', array('service' => $url)), 4
             );
         }
 
@@ -61,7 +67,7 @@ class PhalApi_ApiFactory {
 
         if (!method_exists($api, $action) || !is_callable(array($api, $action))) {
             throw new PhalApi_Exception_BadRequest(
-                T('no such service as {service}', array('service' => $service)), 4
+                T('no such service as {service}', array('service' => $url)), 4
             );
         }
 

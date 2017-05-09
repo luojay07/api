@@ -2,6 +2,7 @@
 /**
  * 远程接口连接器 Task_Runner_Remote_Connector
  * 
+ * @author dogstar <chanzonghuang@gmail.com> 20150516
  */
 
 abstract class Task_Runner_Remote_Connector {

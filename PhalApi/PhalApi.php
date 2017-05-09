@@ -51,15 +51,18 @@ class PhalApi {
         try {
             // 接口调度与响应
             $api    = PhalApi_ApiFactory::generateService(); 
-            $action = DI()->request->getServiceAction();
+            //$action = DI()->request->getServiceAction();
+            $action = DI()->config->get('sys.actionName');
             $data   = call_user_func(array($api, $action));
 
             $rs->setData($data);
         } catch (PhalApi_Exception $ex) {
+            $rs->setData(['ret' => $ex->getCode(), 'msg' => $ex->getMessage()]);     //数据返回统一放到data中
             // 框架或项目可控的异常
-            $rs->setRet($ex->getCode());
-            $rs->setMsg($ex->getMessage());
+            //$rs->setRet($ex->getCode());
+            //$rs->setMsg($ex->getMessage());
         } catch (Exception $ex) {
+            $rs->setData(['ret' => $ex->getCode(), 'msg' => $ex->getMessage()]);
             // 不可控的异常
             DI()->logger->error(DI()->request->getService(), strval($ex));
 

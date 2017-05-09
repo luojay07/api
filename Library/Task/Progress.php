@@ -1,6 +1,8 @@
 <?php
 /**
  * 计划任务进程类
+ * 
+ * @author dogstar <chanzonghuang@gmail.com> 20150520
  */
 
 class Task_Progress {

@@ -98,11 +98,43 @@ abstract class PhalApi_Response {
      * 结果输出
      */
     public function output() {
-    	$this->handleHeaders($this->headers);
+    	/* $this->handleHeaders($this->headers);
 
         $rs = $this->getResult();
 
-    	echo $this->formatResult($rs);
+    	echo $this->formatResult($rs); */
+        
+        //--------------------------------------上面其实都用不着,用我们自己的格式来输出---------------------------
+        
+        // 清空以前的输出缓存,以防止别人错误的输出
+        ob_clean();
+        // 返回头部
+        header("Content-Type: application/json;charset=utf-8");
+        
+        $key = DI()->tokenHandler->getDesKey();
+        $response = json_encode($this->data);
+        
+        $contentType = DI()->request->getContentType();
+        $contentId = DI()->request->getContentId();
+        if (in_array($contentType, [2, 3, 4])) {
+            if (isset($key)) {
+                if(4 == $contentType){
+                    $response = $contentId . $response;
+                    header("Content-Type: application/x-crypto-json");
+                } else {
+                    header("Content-Type: application/crypto-json");
+                }
+                // 压缩
+                $response = gzcompress($response);
+                // 加密
+                $response = Crypto::desEncrypt($key, $response);
+            } else {
+                header("Content-Type: application/json");
+            }
+        }else {
+            header("Content-Type: application/json");
+        }
+        exit($response);
     }
     
     /** ------------------ getter ------------------ **/

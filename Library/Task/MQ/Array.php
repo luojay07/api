@@ -5,6 +5,7 @@
  * - 用于单元测试，或者临时一次性执行
  * - 队列存放于内存的数组中
  * 
+ * @author dogstar <chanzonghuang@gmail.com> 20150516
  */
 
 class Task_MQ_Array implements Task_MQ {

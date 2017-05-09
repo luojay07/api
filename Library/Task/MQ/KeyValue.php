@@ -4,6 +4,7 @@
  *
  * - 队列存放于Key-Value的缓存中
  *
+ * @author dogstar <chanzonghuang@gmail.com> 20160430
  */
 
 class Task_MQ_KeyValue implements Task_MQ {

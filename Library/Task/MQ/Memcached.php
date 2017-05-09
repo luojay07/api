@@ -4,6 +4,7 @@
  *
  * - 队列存放于Memcached/Memcache，但须注意MC默认情况下单个key最大只支持1M大小
  *
+ * @author dogstar <chanzonghuang@gmail.com> 20160430
  */
 
 class Task_MQ_Memcached extends Task_MQ_KeyValue {

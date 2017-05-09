@@ -20,7 +20,7 @@
     * @package     PhalApi\SDK
     * @license     http://www.phalapi.net/license GPL 协议
     * @link        http://www.phalapi.net/
-    *  2015-10-16
+    * @author      dogstar <chanzonghuang@gmail.com> 2015-10-16
  */
 
 class PhalApiClient {
@@ -111,11 +111,11 @@ class PhalApiClient {
 
     /**
      * 设置超时时间，单位毫秒
-     * @param int $timeoutMS 超时时间，单位毫秒
+     * @param int $timeoutMs 超时时间，单位毫秒
      * @return PhalApiClient
      */
-    public function withTimeout($timeoutMS) {
-        $this->timeoutMS = $timeoutMS;
+    public function withTimeout($timeoutMs) {
+        $this->timeoutMs = $timeoutMs;
         return $this;
     }
 

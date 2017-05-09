@@ -39,7 +39,7 @@ import android.util.Log;
     * @package     PhalApi\Response
     * @license     http://www.phalapi.net/license GPL 协议
     * @link        http://www.phalapi.net/
-    * @author      Jay 2017-04-01
+    * @author      dogstar <chanzonghuang@gmail.com> 2015-10-16
  */
 
 public class PhalApiClient {

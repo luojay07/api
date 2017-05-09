@@ -4,6 +4,7 @@
  */
 
 require_once dirname(__FILE__) . '/init.php';
+require_once dirname(__FILE__) . '/define.php';
 
 //装载你的接口
 DI()->loader->addDirs('Demo');

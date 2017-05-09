@@ -4,6 +4,7 @@
  *
  * - 队列存放于本地文件 中，不支持分布式MQ
  *
+ * @author dogstar <chanzonghuang@gmail.com> 20150516
  */
 
 class Task_MQ_File extends Task_MQ_KeyValue {
