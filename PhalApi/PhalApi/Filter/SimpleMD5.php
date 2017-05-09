@@ -14,7 +14,7 @@
  * @package     PhalApi\Filter
  * @license     http://www.phalapi.net/license GPL 协议
  * @link        http://www.phalapi.net/
- *  2015-10-23
+ * @author      dogstar <chanzonghuang@gmail.com> 2015-10-23
  */
 
 class PhalApi_Filter_SimpleMD5 implements PhalApi_Filter {

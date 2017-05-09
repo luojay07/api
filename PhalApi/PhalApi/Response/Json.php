@@ -5,7 +5,7 @@
  * @package     PhalApi\Response
  * @license     http://www.phalapi.net/license GPL 协议
  * @link        http://www.phalapi.net/
- *  2015-02-09
+ * @author      dogstar <chanzonghuang@gmail.com> 2015-02-09
  */
 
 class PhalApi_Response_Json extends PhalApi_Response {

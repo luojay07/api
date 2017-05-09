@@ -5,7 +5,7 @@
  * @package     PhalApi\Cache
  * @license     http://www.phalapi.net/license GPL 协议
  * @link        http://www.phalapi.net/
- *  2015-02-26
+ * @author      dogstar <chanzonghuang@gmail.com> 2015-02-26
  */
 
 class PhalApi_Cache_File implements PhalApi_Cache {

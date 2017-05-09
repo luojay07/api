@@ -5,7 +5,7 @@
  * @package     PhalApi\Request
  * @license     http://www.phalapi.net/license GPL 协议
  * @link        http://www.phalapi.net/
- *  2015-11-07
+ * @author      dogstar <chanzonghuang@gmail.com> 2015-11-07
  */
 
 class PhalApi_Request_Formatter_Date extends PhalApi_Request_Formatter_Base implements PhalApi_Request_Formatter {
@@ -26,6 +26,13 @@ class PhalApi_Request_Formatter_Date extends PhalApi_Request_Formatter_Base impl
             $rs = strtotime($value);
             if ($rs <= 0) {
             	$rs = 0;
+            }
+
+            if (isset($rule['min']) && !is_numeric($rule['min'])) {
+                $rule['min'] = strtotime($rule['min']);
+            }
+            if (isset($rule['max']) && !is_numeric($rule['max'])) {
+                $rule['max'] = strtotime($rule['max']);
             }
 
             $rs = $this->filterByRange($rs, $rule);

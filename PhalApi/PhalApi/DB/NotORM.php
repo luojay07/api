@@ -60,7 +60,7 @@ require_once PHALAPI_ROOT . DIRECTORY_SEPARATOR . 'NotORM' . DIRECTORY_SEPARATOR
  * @link        http://www.notorm.com/
  * @license     http://www.phalapi.net/license GPL 协议
  * @link        http://www.phalapi.net/
- *  2014-11-22
+ * @author      dogstar <chanzonghuang@gmail.com> 2014-11-22
  */
 
 class PhalApi_DB_NotORM /** implements PhalApi_DB */ {
@@ -123,7 +123,7 @@ class PhalApi_DB_NotORM /** implements PhalApi_DB */ {
     }
 
     public function __set($name, $value) {
-        foreach ($this->_notorms as $key => $notorm) {
+        foreach ($this->_notorms as $notorm) {
             $notorm->$name = $value;
         }
     }

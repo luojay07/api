@@ -5,7 +5,7 @@
  * @package     PhalApi\Request
  * @license     http://www.phalapi.net/license GPL 协议
  * @link        http://www.phalapi.net/
- *  2015-11-07
+ * @author      dogstar <chanzonghuang@gmail.com> 2015-11-07
  */
 
 
@@ -20,16 +20,29 @@ class PhalApi_Request_Formatter_Callable extends PhalApi_Request_Formatter_Base 
      *
      */
     public function parse($value, $rule) {
-        if (!isset($rule['callback']) || !is_callable($rule['callback'])) {
+        $callback = isset($rule['callback']) 
+            ? $rule['callback'] 
+            : (isset($rule['callable']) ? $rule['callable'] : NULL);
+
+        // 提前触发回调类的加载，以便能正常回调
+        if (is_array($callback) && count($callback) >= 2 && is_string($callback[0])) {
+            // Type 2：静态类方法，如：array('MyClass', 'myCallbackMethod')
+            class_exists($callback[0]);
+        } else if (is_string($callback) && preg_match('/(.*)\:\:/', $callback, $macthes)) {
+            // Type 4：静态类方法，如：'MyClass::myCallbackMethod'
+            class_exists($macthes[1]);
+        }
+
+        if (empty($callback) || !is_callable($callback)) {
             throw new PhalApi_Exception_InternalServerError(
                 T('invalid callback for rule: {name}', array('name' => $rule['name']))
             );
         }
 
         if (isset($rule['params'])) {
-            return call_user_func($rule['callback'], $value, $rule, $rule['params']);
+            return call_user_func($callback, $value, $rule, $rule['params']);
         } else {
-            return call_user_func($rule['callback'], $value, $rule);
+            return call_user_func($callback, $value, $rule);
         }
     }
 }

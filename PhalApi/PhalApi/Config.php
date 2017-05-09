@@ -11,7 +11,7 @@
  *  'version' => '1.1.1',
  * 
  *  'email' => array(
- *      'address' => '422823128@qq.com',
+ *      'address' => 'chanzonghuang@gmail.com',
  *   );
  * );
  *
@@ -23,12 +23,13 @@
  * DI()->config->get('app.version');  //返回：1.1.1
  * 
  * //app.php里面的多级配置
- * DI()->config->get('app.version.address');  //返回：422823128@qq.com
+ * DI()->config->get('app.version.address');  //返回：chanzonghuang@gmail.com
 ```
  *
  * @package PhalApi\Config
  * @license http://www.phalapi.net/license GPL 协议
  * @link http://www.phalapi.net/
+ * @author dogstar <chanzonghuang@gmail.com> 2014-10-02
  */
 
 interface PhalApi_Config {

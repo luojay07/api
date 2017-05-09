@@ -5,6 +5,7 @@
  * - 此脚本可用于生成基本的接口代码，包括Api, Domain, Model
  * - 非必须的，项目可根据自己喜好使用
  *
+ * @author dogstar <chanzonghuang@gmail.com> 2016-05-14 
  */
 
 define('CUR_PATH', dirname(__FILE__));

@@ -24,7 +24,7 @@
  * @package     PhalApi\Request
  * @license     http://www.phalapi.net/license GPL 协议
  * @link        http://www.phalapi.net/
- *  2014-10-04
+ * @author      dogstar <chanzonghuang@gmail.com> 2014-10-04
  */
 
 class PhalApi_Request_Var {
@@ -58,7 +58,7 @@ class PhalApi_Request_Var {
             return $value;
         }
 
-        return self::formatAllType($type, $value, $rule);
+        return static::formatAllType($type, $value, $rule);
     }
 
     /**

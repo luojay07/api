@@ -17,7 +17,7 @@
  * @package     PhalApi\Logger
  * @license     http://www.phalapi.net/license GPL 协议
  * @link        http://www.phalapi.net/
- *  2014-10-02
+ * @author      dogstar <chanzonghuang@gmail.com> 2014-10-02
  */
 
 class PhalApi_Logger_File extends PhalApi_Logger {
@@ -59,8 +59,12 @@ class PhalApi_Logger_File extends PhalApi_Logger {
         $this->logFile = $folder
             . DIRECTORY_SEPARATOR . $this->fileDate . '.log';
         if (!file_exists($this->logFile)) {
-            touch($this->logFile);
-            chmod($this->logFile, 0777);
+            // 当没有权限时，touch会抛出(Permission denied)异常
+            @touch($this->logFile);
+            // touch失败时，chmod会抛出(No such file or directory)异常
+            if (file_exists($this->logFile)) {
+                chmod($this->logFile, 0777);
+            }
         }
     }
 

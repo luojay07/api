@@ -21,7 +21,7 @@
  * @package     PhalApi\Helper
  * @license     http://www.phalapi.net/license GPL 协议
  * @link        http://www.phalapi.net/
- *  2015-05-30
+ * @author      dogstar <chanzonghuang@gmail.com> 2015-05-30
  */
 
 class PhalApi_Helper_TestRunner {
@@ -36,20 +36,14 @@ class PhalApi_Helper_TestRunner {
         $params = array_merge($urlParams, $params);
 
         if (!isset($params['service'])) {
-            throw new Exception('miss service in url');
+            throw new PhalApi_Exception(T('miss service in url'));
         }
         DI()->request = new PhalApi_Request($params);
 
         $apiObj = PhalApi_ApiFactory::generateService(true);
-        list($api, $action) = explode('.', $urlParams['service']);
+        $action = DI()->request->getServiceAction();
 
         $rs = $apiObj->$action();
-
-        /**
-        $this->assertNotEmpty($rs);
-        $this->assertArrayHasKey('code', $rs);
-        $this->assertArrayHasKey('msg', $rs);
-         */
 
         return $rs;
     }

@@ -7,7 +7,7 @@
  * @package     PhalApi\Cache
  * @license     http://www.phalapi.net/license GPL 协议
  * @link        http://www.phalapi.net/
- *  2014-11-14
+ * @author      dogstar <chanzonghuang@gmail.com> 2014-11-14
  */
 
 class PhalApi_Cache_Memcached extends PhalApi_Cache_Memcache {

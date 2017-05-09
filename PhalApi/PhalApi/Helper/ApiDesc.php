@@ -5,31 +5,19 @@
  * @package     PhalApi\Helper
  * @license     http://www.phalapi.net/license GPL 协议
  * @link        http://www.phalapi.net/
- *  2015-05-30
+ * @author      dogstar <chanzonghuang@gmail.com> 2015-05-30
  */
 
 class PhalApi_Helper_ApiDesc {
 
     public function render() {
-        $service = DI()->request->get('service', 'Default.Index');
+        $service = DI()->request->getService();
 
         $rules = array();
         $returns = array();
         $description = '';
         $descComment = '//请使用@desc 注释';
         $exceptions = array();
-
-        $typeMaps = array(
-            'string' => '字符串',
-            'int' => '整型',
-            'float' => '浮点型',
-            'boolean' => '布尔型',
-            'date' => '日期',
-            'array' => '数组',
-            'fixed' => '固定值',
-            'enum' => '枚举类型',
-            'object' => '对象',
-        );
 
         try {
             $api = PhalApi_ApiFactory::generateService(false);

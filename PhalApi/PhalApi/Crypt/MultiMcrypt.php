@@ -10,7 +10,7 @@
  * @package     PhalApi\Crypt
  * @license     http://www.phalapi.net/license GPL 协议
  * @link        http://www.phalapi.net/
- *  2014-12-11
+ * @author      dogstar <chanzonghuang@gmail.com> 2014-12-11
  */
 
 class PhalApi_Crypt_MultiMcrypt implements PhalApi_Crypt {
