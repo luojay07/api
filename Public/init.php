@@ -42,8 +42,8 @@ DI()->tokenHandler = function (){
     return new Session();
 };
 
-// 翻译语言包设定
-SL('zh_cn');
+// 翻译语言包设定   放到PhalApi/PhalApi.php中
+//SL('zh_cn');
 
 /** ---------------- 定制注册 可选服务组件 ---------------- **/
 

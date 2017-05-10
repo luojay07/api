@@ -2,6 +2,7 @@
 /**
  * $APP_NAME 统一入口
  */
+
 require_once dirname(__FILE__) . '/init.php';
 require_once dirname(__FILE__) . '/define.php';
 

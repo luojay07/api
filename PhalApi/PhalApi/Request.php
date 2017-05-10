@@ -137,7 +137,7 @@ class PhalApi_Request {
         switch ($this->requestMethoed) {
             case 'GET':
             case 'PUT':
-                return [];
+                return $_REQUEST;
                 break;
             default:
                 $contentType = strtolower($_SERVER["CONTENT_TYPE"]);

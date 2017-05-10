@@ -31,7 +31,7 @@ class PhalApi_Translator {
 	/**
 	 * @var array $language 语言
 	 */
-	protected static $language = 'en';
+	protected static $language = 'chs';
 
     /**
      * 获取翻译
@@ -41,10 +41,10 @@ class PhalApi_Translator {
      */
     public static function get($key, $params = array()) {
         if (static::$message === NULL) {
-            static::setLanguage('en');
+            static::setLanguage('chs');
         }
 
-        $rs = isset(static::$message[$key]) ? static::$message[$key] : $key;
+        $rs = isset(static::$message[$key][static::$language]) ? static::$message[$key][static::$language] : $key;
 
         $names = array_keys($params);
         $names = array_map(array('PhalApi_Translator', 'formatVar'), $names);
@@ -65,7 +65,7 @@ class PhalApi_Translator {
 
         static::$message = array();
 
-        static::addMessage(PHALAPI_ROOT);
+        //static::addMessage(PHALAPI_ROOT);
 
         if (defined('API_ROOT')) {
             static::addMessage(API_ROOT);
@@ -81,16 +81,16 @@ class PhalApi_Translator {
      * @return NULL
      */
     public static function addMessage($path) {
-        $moreMessagePath = static::getMessageFilePath($path, static::$language);
+        $moreMessagePath = static::getMessageFilePath($path);
 
         if (file_exists($moreMessagePath)) {
-            static::$message = array_merge(static::$message, include $moreMessagePath);
+            static::$message = include $moreMessagePath;//array_merge(static::$message, include $moreMessagePath);
         }
     }
 
-    protected static function getMessageFilePath($root, $language) {
+    protected static function getMessageFilePath($root) {
         return implode(DIRECTORY_SEPARATOR, 
-            array($root, 'Language', strtolower($language), 'common.php'));
+            array($root, 'Language', 'common.php'));
     }
 
     /**

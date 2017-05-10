@@ -52,12 +52,27 @@ class PhalApi {
             // 接口调度与响应
             $api    = PhalApi_ApiFactory::generateService(); 
             //$action = DI()->request->getServiceAction();
+            
+            //语言设置
+            if (isset(DI()->tokenHandler->store->lang)) {
+                SL(DI()->tokenHandler->store->lang);
+            }else {
+                if (DI()->request->get('lang')) {
+                    SL(DI()->request->get('lang'));
+                }else {
+                    SL('chs');
+                }
+            }
+            
             $action = DI()->config->get('sys.actionName');
             $data   = call_user_func(array($api, $action));
 
             $rs->setData($data);
         } catch (PhalApi_Exception $ex) {
             $rs->setData(['ret' => $ex->getCode(), 'msg' => $ex->getMessage()]);     //数据返回统一放到data中
+            if (DI()->debug) {
+                DI()->logger->info($ex->getMessage());
+            }
             // 框架或项目可控的异常
             //$rs->setRet($ex->getCode());
             //$rs->setMsg($ex->getMessage());

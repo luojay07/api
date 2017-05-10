@@ -7,13 +7,6 @@
 
 class Api_System_Connect extends Api_Base {
 
-	public function getRules() {
-        return array(
-            'index' => array(
-                'username' 	=> array('name' => 'username', 'default' => 'PHPer', ),
-            ),
-        );
-	}
 	
 	/**
 	 * 默认接口服务
