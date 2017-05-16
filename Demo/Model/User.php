@@ -2,10 +2,15 @@
 
 class Model_User extends PhalApi_Model_NotORM {
 
+    //自定义数据库名 如果没有定义默认是user表
+    protected function getTableName($id) {
+        return 'com_user_base';
+    }
+
     public function getByUserId($userId) {
         return $this->getORM()
             ->select('*')
-            ->where('id = ?', $userId)
+            ->where('user_id = ?', $userId)
             ->fetch();
     }
 
@@ -20,8 +25,8 @@ class Model_User extends PhalApi_Model_NotORM {
     }
 
     /**
-    protected function getTableName($id) {
-        return 'user';
-    }
-    */
+     * protected function getTableName($id) {
+     * return 'user';
+     * }
+     */
 }
